@@ -114,13 +114,13 @@ version="1.0.1">
 		<source-file src="src/android/mips/libbdpush_V2_2.so" target-dir="libs/mips" />
 		<!--        <source-file src="src/android/x86/libbdpush_V1_0.so" target-dir="libs/x86" />-->
 		<source-file src="src/android/pushservice-4.2.0.63.jar" target-dir="libs" />
-		<source-file src="src/android/res/res/drawable-hdpi/bpush_gray_logo.png" target-dir="res/drawable-hdpi"/>
+		<source-file src="src/android/res/drawable-hdpi/bpush_gray_logo.png" target-dir="res/drawable-hdpi"/>
 		<source-file src="src/android/res/drawable-hdpi/bpush_list_item_bg.9.png" target-dir="res/drawable-hdpi"/>
 		<source-file src="src/android/res/drawable-hdpi/bpush_message_prompt.png" target-dir="res/drawable-hdpi"/>
 		<source-file src="src/android/res/drawable-hdpi/bpush_return_btn.png" target-dir="res/drawable-hdpi"/>
-		<source-file src="src/android/rres/drawable-hdpi/bpush_top_bg.9.png" target-dir="res/drawable-hdpi"/>
+		<source-file src="src/android/res/drawable-hdpi/bpush_top_bg.9.png" target-dir="res/drawable-hdpi"/>
 		<source-file src="src/android/res/drawable-hdpi/simple_notification_icon.png" target-dir="res/drawable-hdpi"/>
-		<source-file src="src/android/rres/drawable-ldpi/simple_notification_icon.png" target-dir="res/drawable-ldpi"/>
+		<source-file src="src/android/res/drawable-ldpi/simple_notification_icon.png" target-dir="res/drawable-ldpi"/>
 		<source-file src="src/android/res/drawable-mdpi/simple_notification_icon.png" target-dir="res/drawable-mdpi"/>
 		<source-file src="src/android/res/layout/bpush_download_progress.xml" target-dir="res/layout"/>
 		<source-file src="src/android/res/layout/bpush_media_list_item.xml" target-dir="res/layout"/>
