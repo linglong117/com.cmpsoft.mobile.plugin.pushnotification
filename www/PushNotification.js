@@ -20,8 +20,9 @@ var FGPushNotification = function() {
         });
         
         //alert("me >>>> " + JSON.stringify(me));
-    
 };
+
+
 FGPushNotification.prototype.init = function(api_key)
 {
 		//alert(api_key);
@@ -47,4 +48,4 @@ FGPushNotification.prototype.getInfo = function(successCallback, errorCallback) 
 };
 var fastgoPushNotification = new FGPushNotification();
 
-module.exports = fastgoPushNotification;});
+module.exports = fastgoPushNotification;
