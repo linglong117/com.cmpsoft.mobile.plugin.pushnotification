@@ -23,8 +23,8 @@ version="1.0.1">
 		</config-file>
 		<config-file target="AndroidManifest.xml" parent="/*">
 
-			<application
-			android:name="com.baidu.frontia.FrontiaApplication"></application>
+			<!-- <application
+			android:name="com.baidu.frontia.FrontiaApplication"></application> -->
 
 			<!-- 百度云推送 -->
 			<!--     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
