@@ -1,4 +1,3 @@
-cordova.define("com.cmpsoft.mobile.plugin.pushnotification.FGPushNotification", function(require, exports, module) {
 var argscheck = require('cordova/argscheck'),
     cordova = require('cordova'),
     exec = require('cordova/exec');
