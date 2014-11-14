@@ -1,6 +1,8 @@
-var argscheck = require('cordova/argscheck'),
-    cordova = require('cordova'),
-    exec = require('cordova/exec');
+
+
+var argscheck=require('cordova/argscheck'), channel=require('cordova/channel'), utils=require('cordova/utils'), exec=require('cordova/exec'), cordova=require('cordova');
+
+    
 
 var FGPushNotification = function() {
 	this.registered = false;
@@ -17,12 +19,12 @@ var FGPushNotification = function() {
             me.clientId = info.clientId;
         });
         
-        alert("me >>>> " + JSON.stringify(me));
+        //alert("me >>>> " + JSON.stringify(me));
     
 };
 FGPushNotification.prototype.init = function(api_key)
 {
-		alert(api_key);
+		//alert(api_key);
     exec(fastgoPushNotification.successFn, fastgoPushNotification.failureFn, 'FGPushNotification', 'init', [api_key]);
 };
 
