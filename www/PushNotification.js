@@ -1,11 +1,29 @@
-var cordova = require('cordova'),
+cordova.define("com.cmpsoft.mobile.plugin.pushnotification.FGPushNotification", function(require, exports, module) {
+var argscheck = require('cordova/argscheck'),
+    cordova = require('cordova'),
     exec = require('cordova/exec');
 
 var FGPushNotification = function() {
 	this.registered = false;
+	//
+	this.appId = null;
+    this.channelId = null;
+    this.clientId = null;
+    
+    var me = this;
+
+     me.getInfo(function(info) {
+            me.appId = info.appId;
+            me.channelId = info.channelId;
+            me.clientId = info.clientId;
+        });
+        
+        alert("me >>>> " + JSON.stringify(me));
+    
 };
 FGPushNotification.prototype.init = function(api_key)
 {
+		alert(api_key);
     exec(fastgoPushNotification.successFn, fastgoPushNotification.failureFn, 'FGPushNotification', 'init', [api_key]);
 };
 
@@ -22,6 +40,10 @@ FGPushNotification.prototype.failureFn = function(info)
 	fastgoPushNotification.registered = false;
 };
 
+FGPushNotification.prototype.getInfo = function(successCallback, errorCallback) {
+    argscheck.checkArgs('fF', 'FGPushNotification.getInfo', arguments);
+    exec(successCallback, errorCallback, "FGPushNotification", "getInfo", []);
+};
 var fastgoPushNotification = new FGPushNotification();
 
-module.exports = fastgoPushNotification;
+module.exports = fastgoPushNotification;});

@@ -1,72 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-    xmlns:rim="http://www.blackberry.com/ns/widgets"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    id="com.cmpsoft.mobile.plugin.pushnotification"
-    version="1.0.0">
+xmlns:rim="http://www.blackberry.com/ns/widgets"
+xmlns:android="http://schemas.android.com/apk/res/android"
+id="com.cmpsoft.mobile.plugin.pushnotification"
+version="1.0.1">
 
-    <name>PushNotification</name>
-    <description>pushNotification plugin description</description>
-    <license>Apache 2.0</license>
+	<name>PushNotification</name>
+	<description>pushNotification plugin description by mx update</description>
+	<license>Apache 2.0</license>
 	<keywords>cmpsoft, pushnotification</keywords>
-	
 	<js-module src="www/PushNotification.js" name="FGPushNotification">
 		<clobbers target="fastgoPushNotification" />
 	</js-module>
 
-    <!-- android -->
-    <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="FGPushNotification">
-                <param name="android-package" value="com.cmpsoft.mobile.plugin.pushnotification.PushNotification"/>
-            </feature>
-        </config-file>
+	<!-- android -->
+	<platform name="android">
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="FGPushNotification">
+				<param name="android-package" value="com.cmpsoft.mobile.plugin.pushnotification.PushNotification"/>
+			</feature>
+		</config-file>
+		<config-file target="AndroidManifest.xml" parent="/*">
 
-        <config-file target="AndroidManifest.xml" parent="/*">
-            <uses-permission android:name="android.permission.INTERNET"/>
+			<application
+			android:name="com.baidu.frontia.FrontiaApplication"></application>
+
+			<!-- 百度云推送 -->
+			<!--     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+			-->
+			<!-- Push service 运行需要的权限 -->
+			<uses-permission android:name="android.permission.INTERNET"/>
 			<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+			<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 			<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 			<uses-permission android:name="android.permission.WRITE_SETTINGS" />
+			<uses-permission android:name="android.permission.VIBRATE" />
+			<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+			<uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER"/>
+			<uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
 			<uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+			<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 			<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-        </config-file>
-		
+
+		</config-file>
 		<config-file target="AndroidManifest.xml" parent="/manifest/application">
-               
-			    <!-- push service -->
-				<receiver android:name="com.baidu.android.pushservice.PushServiceReceiver"
-					android:process=":bdservice_v1">
-					<intent-filter>
-						<action android:name="android.intent.action.BOOT_COMPLETED" />
-						<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-						<action android:name="com.baidu.android.pushservice.action.notification.SHOW" />
-						<action android:name="com.baidu.android.pushservice.action.media.CLICK" />
-					</intent-filter>
-				</receiver>
 
-				<receiver android:name="com.baidu.android.pushservice.RegistrationReceiver"
-					android:process=":bdservice_v1">
-					<intent-filter>
-						<action android:name="com.baidu.android.pushservice.action.METHOD" />
-						<action android:name="com.baidu.android.pushservice.action.BIND_SYNC" />
-					</intent-filter>
-					<intent-filter>
-						<action android:name="android.intent.action.PACKAGE_REMOVED"/>
-						<data android:scheme="package" />
-					</intent-filter>                   
-				</receiver>
-				
-				<service android:name="com.baidu.android.pushservice.PushService"
-					android:exported="true" android:process=":bdservice_v1" />
-			   
-        </config-file>
+			<!-- push service -->
+			<!--
+			<receiver android:name="com.baidu.android.pushservice.PushServiceReceiver"
+			android:process=":bdservice_v1">
+			<intent-filter>
+			<action android:name="android.intent.action.BOOT_COMPLETED" />
+			<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+			<action android:name="com.baidu.android.pushservice.action.notification.SHOW" />
+			<action android:name="com.baidu.android.pushservice.action.media.CLICK" />
+			</intent-filter>
+			</receiver>
 
-        <source-file src="src/android/PushNotification.java" target-dir="src/com/cmpsoft/mobile/plugin/pushnotification" />
-        <source-file src="src/android/armeabi/libbdpush_V1_0.so" target-dir="libs/armeabi" />
-        <source-file src="src/android/mips/libbdpush_V1_0.so" target-dir="libs/mips" />
-        <source-file src="src/android/x86/libbdpush_V1_0.so" target-dir="libs/x86" />
-        <source-file src="src/android/pushservice-2.4.0.jar" target-dir="libs" />
-    </platform>  
+			<receiver android:name="com.baidu.android.pushservice.RegistrationReceiver"
+			android:process=":bdservice_v1">
+			<intent-filter>
+			<action android:name="com.baidu.android.pushservice.action.METHOD" />
+			<action android:name="com.baidu.android.pushservice.action.BIND_SYNC" />
+			</intent-filter>
+			<intent-filter>
+			<action android:name="android.intent.action.PACKAGE_REMOVED"/>
+			<data android:scheme="package" />
+			</intent-filter>
+			</receiver>
+
+			<service android:name="com.baidu.android.pushservice.PushService"
+			android:exported="true" android:process=":bdservice_v1" />
+			InRRp5u8SOiBtsWsUuTNbLK8-->
+
+			<!-- push必须的receviver和service声明 -->
+			<receiver android:name="com.baidu.android.pushservice.PushServiceReceiver"
+			android:process=":bdservice_v1">
+				<intent-filter>
+					<action android:name="android.intent.action.BOOT_COMPLETED" />
+					<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+					<action android:name="com.baidu.android.pushservice.action.notification.SHOW" />
+					<action android:name="com.baidu.android.pushservice.action.media.CLICK" />
+				</intent-filter>
+			</receiver>
+			<receiver android:name="com.baidu.android.pushservice.RegistrationReceiver"
+			android:process=":bdservice_v1">
+				<intent-filter>
+					<action android:name="com.baidu.android.pushservice.action.METHOD" />
+					<action android:name="com.baidu.android.pushservice.action.BIND_SYNC" />
+				</intent-filter>
+				<intent-filter>
+					<action android:name="android.intent.action.PACKAGE_REMOVED"/>
+					<data android:scheme="package" />
+				</intent-filter>
+			</receiver>
+			<service
+			android:name="com.baidu.android.pushservice.PushService"
+			android:exported="true"
+			android:process=":bdservice_v1" >
+				<intent-filter >
+					<action android:name="com.baidu.android.pushservice.action.PUSH_SERVICE"/>
+				</intent-filter>
+			</service>
+			<!-- push结束 -->
+
+			<!-- 在百度开发者中心查询应用的API Key -->
+			<meta-data android:name="api_key" android:value="InRRp5u8SOiBtsWsUuTNbLK8" />
+
+		</config-file>
+		<source-file src="src/android/PushNotification.java" target-dir="src/com/cmpsoft/mobile/plugin/pushnotification" />
+		<source-file src="src/android/armeabi/libbdpush_V2_2.so" target-dir="libs/armeabi" />
+		<source-file src="src/android/mips/libbdpush_V2_2.so" target-dir="libs/mips" />
+		<!--        <source-file src="src/android/x86/libbdpush_V1_0.so" target-dir="libs/x86" />-->
+		<source-file src="src/android/pushservice-4.2.0.63.jar" target-dir="libs" />
+		<source-file src="src/android/res/res/drawable-hdpi/bpush_gray_logo.png" target-dir="res/drawable-hdpi"/>
+		<source-file src="src/android/res/drawable-hdpi/bpush_list_item_bg.9.png" target-dir="res/drawable-hdpi"/>
+		<source-file src="src/android/res/drawable-hdpi/bpush_message_prompt.png" target-dir="res/drawable-hdpi"/>
+		<source-file src="src/android/res/drawable-hdpi/bpush_return_btn.png" target-dir="res/drawable-hdpi"/>
+		<source-file src="src/android/rres/drawable-hdpi/bpush_top_bg.9.png" target-dir="res/drawable-hdpi"/>
+		<source-file src="src/android/res/drawable-hdpi/simple_notification_icon.png" target-dir="res/drawable-hdpi"/>
+		<source-file src="src/android/rres/drawable-ldpi/simple_notification_icon.png" target-dir="res/drawable-ldpi"/>
+		<source-file src="src/android/res/drawable-mdpi/simple_notification_icon.png" target-dir="res/drawable-mdpi"/>
+		<source-file src="src/android/res/layout/bpush_download_progress.xml" target-dir="res/layout"/>
+		<source-file src="src/android/res/layout/bpush_media_list_item.xml" target-dir="res/layout"/>
+		<source-file src="src/android/res/layout/bpush_media_list.xml" target-dir="res/layout"/>
+		<source-file src="src/android/res/layout/notification_custom_builder.xml" target-dir="res/layout"/>
+
+	</platform>
 
 </plugin>
