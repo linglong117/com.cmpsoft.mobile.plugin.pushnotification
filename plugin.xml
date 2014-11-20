@@ -107,8 +107,8 @@ version="1.0.1">
 
 			<!-- 在百度开发者中心查询应用的API Key -->
 			
-			<meta-data android:name="api_key" android:value="InRRp5u8SOiBtsWsUuTNbLK8" />
-		<!-- 	<meta-data android:name="application_android_name" android:value="android:name=\"com.baidu.frontia.FrontiaApplication\"  applicatin 添加属性 android:name= 值为 com.baidu.frontia.FrontiaApplication 项目生成后该语句需要注释" /> -->
+			<!-- <meta-data android:name="api_key" android:value="InRRp5u8SOiBtsWsUuTNbLK8" />
+			<meta-data android:name="application_android_name" android:value="android:name=\"com.baidu.frontia.FrontiaApplication\"  applicatin 添加属性 android:name= 值为 com.baidu.frontia.FrontiaApplication 项目生成后该语句需要注释" /> -->
 
 		</config-file>
 		<source-file src="src/android/PushNotification.java" target-dir="src/com/cmpsoft/mobile/plugin/pushnotification" />
