@@ -23,24 +23,35 @@ var FGPushNotification = function() {
 };
 
 
-FGPushNotification.prototype.init = function(api_key)
+
+FGPushNotification.prototype.customSuccess ={};
+FGPushNotification.prototype.customFail ={};
+
+
+FGPushNotification.prototype.init = function(api_key,success, fail)
 {
-		//alert(api_key);
+        //alert(api_key);
+    customSuccess = success;
+    customFail = fail;
     exec(fastgoPushNotification.successFn, fastgoPushNotification.failureFn, 'FGPushNotification', 'init', [api_key]);
 };
 
 FGPushNotification.prototype.successFn = function(info)
 {
-	if(info){
-		fastgoPushNotification.registered = true;
-		cordova.fireDocumentEvent("cloudPushRegistered", info);
-	}
+    //alert(JSON.stringify(info));
+    if(info){
+        customSuccess(info);
+        fastgoPushNotification.registered = true;
+        cordova.fireDocumentEvent("cloudPushRegistered", info);
+    }
 };
 
 FGPushNotification.prototype.failureFn = function(info)
 {
-	fastgoPushNotification.registered = false;
+    customFail(info);
+    fastgoPushNotification.registered = false;
 };
+
 
 FGPushNotification.prototype.getInfo = function(successCallback, errorCallback) {
     argscheck.checkArgs('fF', 'FGPushNotification.getInfo', arguments);
