@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
 xmlns:rim="http://www.blackberry.com/ns/widgets"
 xmlns:android="http://schemas.android.com/apk/res/android"
 id="com.cmpsoft.mobile.plugin.pushnotification"
 version="1.0.1">
-
-	<name>PushNotification</name>
-	<description>pushNotification plugin description by mx update</description>
-	<license>Apache 2.0</license>
-	<keywords>cmpsoft, pushnotification</keywords>
+	<name>
+		PushNotification
+	</name>
+	<description>
+		pushNotification plugin description by mx update
+	</description>
+	<license>
+		Apache 2.0
+	</license>
+	<keywords>
+		cmpsoft, pushnotification
+	</keywords>
 	<js-module src="www/PushNotification.js" name="FGPushNotification">
 		<clobbers target="fastgoPushNotification" />
 	</js-module>
-
 	<!-- android -->
 	<platform name="android">
 		<config-file target="res/xml/config.xml" parent="/*">
@@ -22,13 +27,10 @@ version="1.0.1">
 			</feature>
 		</config-file>
 		<config-file target="AndroidManifest.xml" parent="/*">
-
 			<!-- <application
 			android:name="com.baidu.frontia.FrontiaApplication"></application> -->
-
 			<!-- 百度云推送 -->
-			     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-			
+			<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 			<!-- Push service 运行需要的权限 -->
 			<uses-permission android:name="android.permission.INTERNET"/>
 			<uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -42,10 +44,8 @@ version="1.0.1">
 			<uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
 			<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 			<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
 		</config-file>
 		<config-file target="AndroidManifest.xml" parent="/manifest/application">
-
 			<!-- push service -->
 			<!--
 			<receiver android:name="com.baidu.android.pushservice.PushServiceReceiver"
@@ -57,7 +57,6 @@ version="1.0.1">
 			<action android:name="com.baidu.android.pushservice.action.media.CLICK" />
 			</intent-filter>
 			</receiver>
-
 			<receiver android:name="com.baidu.android.pushservice.RegistrationReceiver"
 			android:process=":bdservice_v1">
 			<intent-filter>
@@ -69,11 +68,9 @@ version="1.0.1">
 			<data android:scheme="package" />
 			</intent-filter>
 			</receiver>
-
 			<service android:name="com.baidu.android.pushservice.PushService"
 			android:exported="true" android:process=":bdservice_v1" />
 			InRRp5u8SOiBtsWsUuTNbLK8-->
-
 			<!-- push必须的receviver和service声明 -->
 			<receiver android:name="com.baidu.android.pushservice.PushServiceReceiver"
 			android:process=":bdservice_v1">
@@ -104,12 +101,9 @@ version="1.0.1">
 				</intent-filter>
 			</service>
 			<!-- push结束 -->
-
 			<!-- 在百度开发者中心查询应用的API Key -->
-			
 			<!-- <meta-data android:name="api_key" android:value="InRRp5u8SOiBtsWsUuTNbLK8" />
 			<meta-data android:name="application_android_name" android:value="android:name=\"com.baidu.frontia.FrontiaApplication\"  applicatin 添加属性 android:name= 值为 com.baidu.frontia.FrontiaApplication 项目生成后该语句需要注释" /> -->
-
 		</config-file>
 		<source-file src="src/android/PushNotification.java" target-dir="src/com/cmpsoft/mobile/plugin/pushnotification" />
 		<source-file src="src/android/armeabi/libbdpush_V2_2.so" target-dir="libs/armeabi" />
@@ -128,7 +122,29 @@ version="1.0.1">
 		<source-file src="src/android/res/layout/bpush_media_list_item.xml" target-dir="res/layout"/>
 		<source-file src="src/android/res/layout/bpush_media_list.xml" target-dir="res/layout"/>
 		<source-file src="src/android/res/layout/notification_custom_builder.xml" target-dir="res/layout"/>
-
 	</platform>
+	<!-- ios -->
+	<platform name="ios">
+		<config-file target="config.xml" parent="/*">
+			<feature name="FGPushNotification">
+				<param name="ios-package" value="com.cmpsoft.mobile.plugin.pushnotification.PushNotification"/>
+			</feature>
+		</config-file>
+		<!-- Note: the ios src is based off src/ios implicitly -->
+		<header-file src="src/ios/PushPlugin.h" />
+		<source-file src="src/ios/PushPlugin.m" />
+		<header-file src="src/ios/AppDelegate+notification.h" />
+		<source-file src="src/ios/AppDelegate+notification.m" />
 
+		
+		<framework src="UIKit.framework" />
+		<framework src="CoreGraphics.framework" />
+		<framework src="MobileCoreServices.framework" />
+		<framework src="libc++.dylib" />
+		<framework src="CoreTelephony.framework" />
+		<framework src="libz.dylib" />
+		<framework src="SystemConfiguration.framework" />
+		<framework src="Foundation.framework" />
+		<framework src="SystemConfiguration.framework" />
+	</platform>
 </plugin>
